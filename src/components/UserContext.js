@@ -4,7 +4,7 @@ const UserContext = createContext();
 
 export const ContextProvider = ({children}) => {
 
-    const [people, setPeople] = useState([]);
+    const [setPeople] = useState([]);
     const [tableData, setTableData] = useState({headers: [], body: []})
     
     const columns = (results) => {
