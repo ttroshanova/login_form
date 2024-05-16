@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Form from './components/Form'
+import { ContextProvider } from './components/UserContext';
+import './App.css'
+import { Suspense, lazy } from 'react';
+import DotLoader from "react-spinners/DotLoader";
+const LazyTable = lazy(() => import('./components/Table'))
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <ContextProvider>
+          <Router>
+            <Routes>
+                <Route path='/' element={<Form/>}/>
+                <Route path='/table' element={
+                <Suspense fallback={<DotLoader color="#36d7b7"/>}>
+                  <LazyTable/>
+                </Suspense>}/>
+            </Routes>
+          </Router>
+      </ContextProvider>
     </div>
   );
 }
