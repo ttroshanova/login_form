@@ -1,14 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useRef, useState } from "react";
 
 const UserContext = createContext();
 
 export const ContextProvider = ({children}) => {
 
-    const [setPeople] = useState([]);
+    let people = useRef();
     const [tableData, setTableData] = useState({headers: [], body: []})
     
     const columns = (results) => {
-        console.log(results)
         const columnsData = [];
         for(const {name, mass, height, hair_color, skin_color} of results) {
           columnsData.push(
@@ -25,7 +24,7 @@ export const ContextProvider = ({children}) => {
         for(const key of Object.keys(columnsData[0])){
           columnsHeaders.push(key)
         }
-        console.log(columnsHeaders, columnsData)
+
       return {headers: columnsHeaders, body: columnsData}
     }
 
@@ -42,8 +41,7 @@ export const ContextProvider = ({children}) => {
             return response.json()
         })
         .then(data => {
-            console.log(data.results)
-            setPeople(data.results)
+            people.current = data.results;
             setTableData(columns(data.results))
         })
     }
