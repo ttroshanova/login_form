@@ -3,5 +3,10 @@
   "filters": {},
   "rules": {
     "no-todo": true
+  },
+  "standard": {
+    "ignore": [
+      "README.md"
+    ]
   }
 }
