@@ -11,9 +11,9 @@ export const ContextProvider = ({ children }) => {
     for (const { name, mass, height, hair_color, skin_color } of results) {
       columnsData.push(
         {
-          'Name': name,
-          'Mass': mass,
-          'Height': height,
+          Name: name,
+          Mass: mass,
+          Height: height,
           'Hair color': hair_color,
           'Skin color': skin_color
         }

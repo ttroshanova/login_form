@@ -70,14 +70,14 @@ button {
   cursor: pointer;
 }
 
-table, 
-th, 
+table,
+th,
 td {
   border: 1px solid #3a435e;
   border-collapse: collapse;
 }
 
-th, 
+th,
 td {
   padding: 10px;
   letter-spacing: 1px;
@@ -97,7 +97,7 @@ th {
 }
 
 @media screen and (max-width: 470px) {
-  th, 
+  th,
   td {
     padding: 5px;
     font-size: 0.8rem;
